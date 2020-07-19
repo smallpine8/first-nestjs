@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  nestjs-example:
+    container_name: nestjs-example
+    image: node:12.18.2
+    tty: true
+    build: 
+      context: .
+      dockerfile: DockerFile-node
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/nestjs-example
+    depends_on:
+      - nestjs-example-db
+  nestjs-example-db:
+    container_name: nestjs-example-db
+    image: mysql:5.7
+    build:
+      context: .
+      dockerfile: dockerfile-MySQL
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: develop
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
