@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Req, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Req, Param, Body, ParseIntPipe, HttpStatus } from '@nestjs/common';
 import { Request } from 'express';
 import { CatService } from './cat.service';
 import { CreateCatDto } from './create-cat.dto';
@@ -17,7 +17,10 @@ export class CatController {
   }
 
   @Get(':id')
-  findOne(@Param() params): string {
-    return `${params.id}匹目のニャー`;
+  findOne(
+    @Param('id', new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }))
+    id: number
+  ): string {
+    return this.catService.findOne(id);
   }
 }
