@@ -1,0 +1,14 @@
+{
+  "type": "mysql",
+  "host": "nestjs-example-db",
+  "port": 3306,
+  "username": "user",
+  "password": "user",
+  "database": "develop",
+  "entities": ["src/**/*.entity.ts"],
+  "migrationsTableName": "custom_migration_table",
+  "migrations": ["src/migrations/**/*.ts"],
+  "cli": {
+      "migrationsDir": "src/migrations"
+  }
+}
