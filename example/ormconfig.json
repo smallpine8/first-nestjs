@@ -5,10 +5,10 @@
   "username": "user",
   "password": "user",
   "database": "develop",
-  "entities": ["src/**/*.entity.ts"],
+  "entities": ["dist/**/*.entity.js"],
   "migrationsTableName": "custom_migration_table",
   "migrations": ["src/migrations/**/*.ts"],
   "cli": {
-      "migrationsDir": "src/migrations"
+    "migrationsDir": "src/migrations"
   }
 }
