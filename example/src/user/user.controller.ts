@@ -10,7 +10,14 @@ export class UserController {
     private userService: UserService
   ) {}
   @Post()
-  async create(@Body() createUserDto: CreateUserDto): Promise<any>{
-    return this.userService.create(createUserDto);
+  async create(@Body() createUserDto: CreateUserDto): Promise<Object> {
+    const user = await this.userService.create(createUserDto);
+    console.log(user);
+    const res = {
+      message: "ユーザーの作成に成功しました",
+      responce: user,
+    };
+
+    return res;
   }
 }
